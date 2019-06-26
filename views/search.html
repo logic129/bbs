@@ -1,0 +1,90 @@
+<?php include 'views/_header.html'?>
+        <div class="main">
+            <div class="wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="crumbs_pages">
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <div class="crumbs">
+                                            <a href="index.html">首页</a>
+                                            >
+                                            <span>关键词“hello”搜索结果</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 hidden-xs">
+                                        <div class="pages">
+                                            <?=pages($page, $totalPages, $half, 'search.php?k='.$keyword);?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="block">
+                                    <?php foreach($posts as $i => $post):?>
+                                        <div class="post">
+                                            <div class="row">
+                                                <div class="col-md-2 hidden-xs hidden-sm">
+                                                    <div class="avatar">
+                                                        <img class="img-circle" src="static/attaches/2.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="text">
+                                                        <h2><a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a></h2>
+                                                        <p><?=mb_substr(strip_tags($post['content']), 0, 80) . '...'?></p>
+                                                        <div class="meta">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <span>由 <?=$post['publish_by']?> 发布于：<?=date('Y-m-d,H:i:s',$post['publish_at'])?></span>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <span>浏览数：<?=$post['views']?></span>
+                                                                    <span>回复数：<?=getReplyCount($db, $post['id'])?></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach?>
+                                    <div class="pages">
+                                        <?=pages($page, $totalPages, $half, 'search.php?k='.$keyword);?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="newpost_btn">
+                                <a href="post-new.php?sid=1" class="btn btn-warning btn-lg btn-block">新建主题</a>
+                            </div>
+                            <div class="secondary">
+                                <div class="block">
+                                    <h3 class="title">最新</h3>
+                                    <ul class="list">
+                                        <?php foreach($lasted as $i=> $post):?>
+                                            <li>
+                                                <a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a>
+                                            </li>
+                                        <?php endforeach?>
+                                    </ul>
+                                </div>
+                                <div class="block">
+                                    <h3 class="title">热帖</h3>
+                                    <ul class="list">
+                                        <?php foreach($hots as $i=> $post):?>
+                                            <li>
+                                                <a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a>
+                                            </li>
+                                        <?php endforeach?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php include 'views/_footer.html'?>

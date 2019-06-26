@@ -1,0 +1,72 @@
+<div class="footer">
+    <div class="wrap">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        <a href="index.php">Home</a> / <a href="section.php?sid=1">Backend</a> / <a href="section.php?sid=2">Frontend</a> / <a href="section.php?sid=3">Database</a> / <a href="section.php?sid=4">UI</a>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="cpoyright">Copyright ©2018 bbs.onlyzen.cn, All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mask" id="mask"></div>
+
+<script src="static/js/jquery-1.12.4.min.js"></script>
+<script src="static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="static/js/learnphp.js"></script>
+
+<?php if(isset($editor) && $editor):?>
+<script src="static/plugins/kindeditor/kindeditor-all-min.js"></script>
+<script src="static/plugins/kindeditor/lang/zh-CN.js"></script>
+<script>
+    //富文本编辑器
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+            allowFileManager : false,
+            height: 300,
+            uploadJson : 'upload_json.php',
+        });
+    });
+</script>
+<?php endif?>
+
+<script>
+    $(function() {
+        $form = $('#post-form');
+        $form.on('click', 'button', function () {
+            if(typeof editor != 'undefined') {
+                //将编辑器的内容设置到原来的textarea控件里
+                editor.sync('textarea[name="content"]');
+            }
+            $.post($form.attr('action'), $form.serialize(), function (res) {
+                console.log(res);
+                alert(res.message);
+                if(!res.status) {
+                    location.href = res.data.goUrl;
+                }
+            }, 'json');
+            return false;
+        });
+
+        //个人中心选项卡
+        $(".block_content").css("display","none");
+        $(".block_content:first").css("display","block");
+
+        $(".a_content").each(function (index) {
+            $(".a_content:eq("+index+")").on("click",function () {
+                $(".block_content").css("display","none");
+                $(".block_content:eq("+index+")").css("display","block");
+            })
+        });
+    });
+
+</script>
+
+</body>
+</html>

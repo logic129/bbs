@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>BBS - Learnphp</title>
+
+    <!-- Bootstrap -->
+    <link href="static/plugins/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <?php if(isset($editor) && $editor):?>
+        <link href="static/plugins/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <?php endif?>
+</head>
+<body>
+<div class="header">
+    <div class="wrap">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="logobar">
+                        <div class="mainnav-oner icon hidden-md hidden-lg" id="mainnav-oner" data-target="#mainnav">
+                            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                        </div>
+                        <div class="logo">
+                            <div class="image">
+                                <a href="index.php">
+                                    <img src="static/img/logo.png" alt="">
+                                </a>
+                            </div>
+                            <h1 class="title">
+                                <a href="index.php">
+                                    <span>BBS</span>
+                                </a>
+                            </h1>
+                        </div>
+                        <div class="search-oner icon hidden-md hidden-lg" id="search-oner" data-target="#search">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search" id="search">
+                        <div class="search-offer icon hidden-md hidden-lg" id="search-offer" data-target="#search">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </div>
+                        <form action="search.php" method="get">
+                            <div class="input-group">
+                                <label class="sr-only" for="keyword">搜索：</label>
+                                <input type="text" class="form-control" id="keyword" placeholder="关键词" name="k">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="submit">搜索</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mainnav" id="mainnav">
+                        <div class="usermenu">
+                            <div class="links">
+                                <?php if(isLogin()) :?>
+                                    <a href="user.php">Hello, <?=$_SESSION['user']['username']?></a>
+                                    <span>/</span>
+                                    <a href="logout.php">登出</a>
+                                <?php else:?>
+                                    <a href="signin.php">登录</a>
+                                    <span>/</span>
+                                    <a href="signup.php">注册</a>
+                                <?php endif;?>
+                            </div>
+                            <div class="mainnav-offer icon hidden-md hidden-lg" id="mainnav-offer" data-target="#mainnav">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <ul class="list-inline navmenu">
+                            <li <?php if(isset($current) && $current == 'Home'):?> class="active"<?php endif?>>
+                                <a href="index.php">Home</a>
+                            </li>
+                            <?php foreach($sections as $i => $section):?>
+                            <li <?php if(isset($current) && $current == $section['name']):?> class="active"<?php endif?>>
+                                <a href="section.php?sid=<?=$i?>"><?=$section['name']?></a>
+                            </li>
+                            <?php endforeach?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

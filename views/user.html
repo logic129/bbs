@@ -1,0 +1,96 @@
+<?php include 'views/_header.html'?>
+        <div class="main">
+            <div class="wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="profile">
+                                <div class="block">
+                                    <ul class="info">
+                                        <li>
+                                            <img src="static/attaches/3.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <span><?=$_SESSION['user']['username']?></span>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <ul class="menu">
+                                        <li>
+                                            <a class="a_content">我的资料</a>
+                                        </li>
+                                        <li>
+                                            <a class="a_content">我的帖子</a>
+                                        </li>
+                                        <li>
+                                            <a class="a_content">账户设置</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="secondary">
+                                <div class="block">
+                                    <div class="crumbs">
+                                        <div class="block_content">
+                                            <span>我的资料</span>
+                                            <hr>
+                                            <p>昵称：<?=$_SESSION['user']['username']?></p>
+                                        </div>
+                                        <div class="block_content">
+                                            <span>我的帖子</span>
+                                            <hr>
+                                            <?php if($posts):?>
+                                                <?php foreach($posts as $i => $post):?>
+                                                    <div class="post">
+                                                        <div class="row">
+                                                            <div class="col-md-2 hidden-xs hidden-sm">
+                                                                <div class="avatar">
+                                                                    <img class="img-circle" src="static/attaches/2.jpg" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-10">
+                                                                <div class="text">
+                                                                    <h2>
+                                                                        <?php if(isset($_SESSION['user']['username'])) :?>
+                                                                        <a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a>
+                                                                        <?php else:?>
+                                                                        <a href="signin.php"><?=$post['subject']?></a>
+                                                                        <?php endif;?>
+                                                                    </h2>
+                                                                    <p><?=mb_substr(strip_tags($post['content']), 0, 80) . '...'?></p>
+                                                                    <div class="meta">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <span>由 <?=$post['publish_by']?> 发布于：<?=date('Y-m-d H:i:s',$post['publish_at'])?></span>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <span>浏览数：<?=$post['views']?></span>
+                                                                                <span>回复数：<?=getReplyCount($db, $post['id'])?></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach?>
+                                            <?php else:?>
+                                                <p>您还没有发过帖子</p>
+                                            <?php endif?>
+                                        </div>
+                                        <div class="block_content">
+                                            <span>账户设置</span>
+                                            <hr>
+                                            <p><a href="delete-user.php">注销账户</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php include 'views/_footer.html'?>

@@ -1,0 +1,426 @@
+/*全局*/
+a {
+    color: #333;
+}
+a:link {
+
+}
+a:visited {
+
+}
+a:hover {
+    text-decoration: none;
+    color: #5bc0de;
+}
+a:active {
+
+}
+img {
+    max-width: 100%;
+}
+ul {
+    padding: 0;
+    color: #ccc;
+    list-style-type: square;
+    list-style-position: inside;
+}
+li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+li * {
+    display: inline;
+    line-height: 1;
+}
+
+/*布局*/
+.wrap {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+.header {
+    margin-top: 25px;
+}
+.footer {
+    padding: 30px 0;
+}
+.main {
+    background: #f5f5f5;
+    padding: 30px 0;
+}
+.slider {
+    margin-bottom: 20px;
+}
+.block {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.block .list > li {
+    margin-bottom: 15px;
+}
+.primary .block{
+    padding-bottom: 0;
+}
+.secondary .block {
+    padding-bottom: 10px;
+}
+
+/*Logobar*/
+.header .logobar .logo {
+    overflow: hidden;
+}
+.header .logobar .logo .image {
+    float: left;
+}
+.header .logobar .logo .title {
+    display: inline;
+    font-size: 24px;
+}
+.header .logobar .logo .title a {
+    float: left;
+    display: block;
+    height: 56px;
+    line-height: 56px;
+}
+.header .logobar .logo .title a span {
+    margin-left: 15px;
+    padding: 5px 0 5px 15px;
+    border-left: 1px solid #ccc;
+}
+
+/*搜索*/
+.header .search {
+    padding-top: 11px;
+    height: 56px;
+}
+
+/*导航菜单*/
+.header .mainnav {
+    position: relative;
+    margin-top: 30px;
+    font-size: 16px;
+}
+.header .mainnav .usermenu {
+    position: absolute;
+    right: 0;
+    bottom: 88px;
+    height: 56px;
+    line-height: 56px;
+    padding-top: 11px;
+    font-size: 14px;
+}
+.header .mainnav .usermenu .links {
+    text-align: right;
+    height: 34px;
+    line-height: 34px;
+}
+.header .mainnav .usermenu .links span {
+    margin: 0 10px;
+}
+.header .mainnav .navmenu {
+    margin-bottom: 0;
+    padding: 15px 0;
+}
+.header .mainnav .navmenu li {
+    margin-right: 10px;
+}
+.header .mainnav .navmenu li.active > a {
+    color: #5bc0de;
+}
+.header .mainnav .navmenu li.active > a:hover {
+    color: #31b0d5;
+}
+
+/*内容版块*/
+.primary .block_header {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #5bc0de;
+    height:36px;
+    line-height: 36px;
+}
+.primary .block_header .title {
+    display: inline-block;
+    margin: 0;
+    padding: 0 20px;
+    background: #5bc0de;
+    height:36px;
+    line-height: 36px;
+    font-size: 15px;
+    color: #fff;
+}
+.primary .block_header .more {
+    float: right;
+    padding: 0 10px;
+}
+.primary .image {
+    margin-bottom: 20px;
+}
+
+/*侧栏*/
+.secondary .title {
+    margin: 0 -20px 20px;
+    padding: 0 20px 15px;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*底部*/
+.footer .cpoyright {
+    text-align: right;
+}
+
+/*遮罩*/
+.mask {
+    z-index: 2;
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    opacity: 0;
+    -webkit-transition: width 0.5s, opacity 0.5s;
+    -moz-transition: width 0.5s, opacity 0.5s;
+    transition: width 0.5s, opacity 0.5s;
+}
+.mask-on {
+    width: 100%;
+    opacity: 0.7;
+}
+
+/*小屏幕头部响应样式*/
+@media (max-width: 991px) {
+    .header {
+        margin: 0;
+    }
+    .header .icon {
+        font-size: 24px;
+    }
+
+    /*Logobar*/
+    .header .logobar {
+        height: 56px;
+        line-height: 56px;
+        text-align: center;
+    }
+    .header .logobar .logo {
+        display: inline-block;
+    }
+    .header .mainnav-oner {
+        line-height: 60px;
+        float: left;
+    }
+    .header .search-oner {
+        line-height: 60px;
+        float: right;
+    }
+
+    /*搜索*/
+    .header .search {
+        z-index: 3;
+        position: fixed;
+        left: 0;
+        top: -59px;
+        transition: top 0.5s;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: 60px;
+        background: #fff;
+    }
+    .header .search-on {
+        top: 0;
+    }
+    .header .search .search-offer {
+        padding-top: 2px;
+        margin-right: 10px;
+        float: left;
+    }
+
+    /*导航菜单*/
+    .header .mainnav {
+        z-index: 10;
+        margin: 0;
+        padding: 0 20px;
+        width: 75%;
+        height: 100%;
+        background: #fff;
+        position: fixed;
+        top: 0;
+        left: -75%;
+        transition: left 0.5s;
+    }
+    .header .mainnav-on {
+        left: 0;
+    }
+    .header .mainnav .mainnav-offer {
+        float: right;
+    }
+    .header .mainnav .usermenu {
+        position: static;
+        border-bottom: 1px solid #ccc;
+        padding: 1px 20px 0;
+        margin-left: -20px;
+        margin-right: -20px;
+        height: 60px;
+        line-height: 60px;
+    }
+    .header .mainnav .usermenu .links {
+        display: inline-block;
+        text-align: left;
+        font-size: 18px;
+    }
+    .header .mainnav .navmenu li {
+        display: block;
+        margin: 5px 0;
+    }
+    .header .mainnav .navmenu li a{
+        display: inline-block;
+        padding: 10px 0;
+    }
+}
+
+/*新增-------------------------------------------*/
+
+.crumbs_pages {
+    padding-top: 8px;
+    margin-bottom: 23px;
+}
+/*面包屑*/
+.crumbs {
+    padding-top: 6px;
+    /*height: 35px;*/
+}
+/*newpost, editpost*/
+.userinfo {
+    padding: 5px;
+    width: 150px;
+    text-align: center;
+}
+.userinfo .nickname {
+    display: block;
+    padding: 10px;
+}
+.authcod_img {
+    height: 34px;
+}
+
+.newpost_btn {
+    margin-bottom: 20px;
+}
+
+.post {
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
+.post .avatar {
+}
+
+.post .text h2{
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.meta span {
+    margin-right:20px;
+    font-size: 12px;
+    color: #999;
+}
+
+.pages {
+    text-align: right;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.post_btns {
+    text-align: right;
+}
+.detail h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.post_image {
+    margin: 15px 0;
+}
+.post_menu {
+    text-align: right;
+    font-size: 12px;
+}
+
+.post_header h2 {
+    float: left;
+}
+.post_header span {
+    float: right;
+}
+
+.detail {
+    border-bottom: 1px solid #e6e6e6;
+}
+.detail .userinfo {
+    margin-top: 20px;
+}
+.detail .post{
+    border: none;
+    border-left: 1px solid #e6e6e6;
+    padding-left: 25px;
+    margin-top: -20px;
+    margin-bottom: 0;
+    padding-top: 30px;
+    min-height: 230px;
+}
+.reply_form {
+    border: none;
+    border-top: 1px solid #e6e6e6;
+    margin: 0;
+}
+
+.reply_form .postform {
+    border-left: 1px solid #e6e6e6;
+    padding: 25px;
+    margin-bottom: -20px;
+}
+
+.navs_pages {
+    padding: 30px 0;
+}
+
+/* 用户中心 */
+
+.profile {
+    text-align: center;
+    color: #333;
+}
+.profile ul {
+    list-style: none;
+}
+
+.profile .menu {
+    text-align: right;
+    padding: 0 50px;
+    font-size: 15px;
+}
+
+.profile .menu li {
+    padding: 15px 0;
+}
+
+.sign-box {
+    background-color: #fff;
+    height: 340px;
+}
+
+.sign-box div.slide {
+    height: 340px;
+    background-image: url(../img/sign.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}

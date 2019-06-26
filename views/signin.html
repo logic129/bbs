@@ -1,0 +1,33 @@
+<?php include 'views/_header.html'?>
+        <div class="main">
+            <div class="wrap">
+                <div class="container-fluid">
+                    <div class="row sign-box">
+                        <form action="signin.php" method="post" class="col-xs-12 col-sm-4" id="post-form">
+                            <h2>登录</h2>
+                            <div class="form-group">
+                                <label for="username">用户名</label>
+                                <input type="text" class="form-control" id="username" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">密码</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-xs-5">
+                                    <label class="sr-only">验证码：</label>
+                                    <input type="text" class="form-control" id="authcode" name="authcode" placeholder="验证码">
+                                </div>
+                                <div class="col-xs-7">
+                                    <img class="authcod_img" src="authcode.php" onclick="this.src='authcode.php?t='+Math.random()" alt="authcode">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-default">提交</button>
+                        </form>
+                        <div class="slide col-xs-12 col-sm-8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php include 'views/_footer.html'?>

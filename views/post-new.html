@@ -1,0 +1,68 @@
+<?php $editor = true?>
+<?php include 'views/_header.html'?>
+        <div class="main">
+            <div class="wrap">
+                <div class="container-fluid">
+                    <div class="crumbs_pages">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="crumbs">
+                                    <a href="index.html">首页</a>
+                                    >
+                                    <span>新建帖子</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 hidden-xs">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="newpost block">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="userinfo">
+                                    <div class="avatar">
+                                        <img src="static/attaches/1.jpg" alt="">
+                                    </div>
+                                    <span class="nickname">
+                                        <?php if(isset($_SESSION['user']['username'])):?>
+                                        <?=$_SESSION['user']['username']?>
+                                        <?php else:?>
+                                        请登录
+                                        <?php endif?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="postform">
+                                    <form action="post-insert.php" method="post" id="post-form" >
+                                        <div class="form-group">
+                                            <label for="subject">主题：</label>
+                                            <input type="text" class="form-control" id="subject" name="subject">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="content">内容：</label>
+                                            <textarea class="form-control" rows="5" id="content" name="content"></textarea>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-xs-5 col-md-2">
+                                                <label class="sr-only">验证码：</label>
+                                                <input type="text" class="form-control" id="authcode" name="authcode" placeholder="验证码">
+                                            </div>
+                                            <div class="col-xs-7 col-md-10">
+                                                <img class="authcod_img" src="authcode.php" onclick="this.src='authcode.php?t='+Math.random()" alt="authcode">
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="section_id" value="<?=$section_id;?>">
+                                        <button type="button" class="btn btn-info">提交</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php include 'views/_footer.html'?>

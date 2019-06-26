@@ -1,0 +1,67 @@
+<?php include 'views/_header.html';?>
+        <div class="main">
+            <div class="wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="slider">
+                                <img src="static/attaches/slide_1.jpg" alt="轮播图">
+                            </div>
+                            <div class="primary">
+                                <?php foreach($sections as $id => $section):?>
+                                <div class="block">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="block_header">
+                                                <h3 class="title"><?=$section['name']?></h3>
+                                                <a class="more" href="section.php?sid=<?=$id?>">more</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <ul class="list">
+                                                <?php foreach($data[$section['name']] as $post):?>
+                                                <li>
+                                                    <a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a>
+                                                </li>
+                                                <?php endforeach?>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="image">
+                                                <img src="<?=$section['image']?>" alt="Backend">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endforeach?>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="secondary">
+                                <div class="block">
+                                    <h3 class="title">最新</h3>
+                                    <ul class="list">
+                                        <?php foreach($lasted as $post):?>
+                                        <li>
+                                            <a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a>
+                                        </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                </div>
+                                <div class="block">
+                                    <h3 class="title">热帖</h3>
+                                    <ul class="list">
+                                        <?php foreach($hots as $post):?>
+                                        <li>
+                                            <a href="post.php?id=<?=$post['id']?>"><?=$post['subject']?></a>
+                                        </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php include 'views/_footer.html'?>
